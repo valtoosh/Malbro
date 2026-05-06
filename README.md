@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Marlbro
 
-## Getting Started
+> The Marlbro Foundation provides discretionary subsidies, denominated in $MARLBRO and SOL, to applicants who furnish documentation of authentic engagement with the namesake article. Pursuant to Schedule R-7, all submissions are subject to manual review.
 
-First, run the development server:
+## Status
+
+This is **Plan 1 (Foundation)** of a multi-plan build. See `docs/superpowers/plans/` for the active build plan and `docs/superpowers/specs/2026-05-06-marlbro-design.md` for the full design spec.
+
+## Tech stack
+
+- Next.js 16 (App Router, TypeScript)
+- Tailwind v4 with CSS `@theme` design tokens
+- Vitest + Testing Library for unit tests
+- Vercel for deploys, GitHub Actions for CI
+
+## Local dev
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | What |
+|---|---|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm test` | Run all tests once |
+| `npm run test:watch` | Run tests in watch mode |
+| `npm run typecheck` | TypeScript check |
+| `npm run lint` | ESLint |
+| `npm run format` | Prettier write |
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/                     Next.js App Router routes
+components/ui/           Generic primitives (Button, Card, Stamp, ...)
+components/layout/       TopBar, Footer, PageShell
+components/icons/        Custom SVG icons (no emojis ever)
+lib/tokens.ts            Design tokens — single source of truth
+docs/superpowers/specs/  Design specs
+docs/superpowers/plans/  Build plans
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Brand rules (high-level)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- All icons / status badges / glyphs are custom SVG. No emojis anywhere.
+- Border radius is always 0.
+- Drop shadows are solid offset, never blurred.
+- No dark mode.
+- See `docs/superpowers/specs/2026-05-06-marlbro-design.md` §10 for the full system.
