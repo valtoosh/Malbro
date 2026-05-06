@@ -36,3 +36,4 @@ pnpm-debug.log*
 .cache/
 .turbo/
 .vercel/
+next-env.d.ts
