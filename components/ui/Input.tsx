@@ -24,5 +24,5 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   { variant = 'mono', className, ...props },
   ref,
 ) {
-  return <input ref={ref} className={cn(base, variants[variant], className)} {...props} />;
+  return <input ref={ref} className={cn(base, variants[variant]!, className)} {...props} />;
 });

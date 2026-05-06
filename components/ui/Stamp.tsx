@@ -27,7 +27,7 @@ export const Stamp = forwardRef<HTMLSpanElement, StampProps>(function Stamp(
   return (
     <span
       ref={ref}
-      className={cn(base, variants[variant], className)}
+      className={cn(base, variants[variant]!, className)}
       style={{ transform: `rotate(${rotate}deg)`, ...style }}
       {...props}
     >

@@ -21,7 +21,7 @@ export const ChevronDivider = forwardRef<SVGSVGElement, ChevronDividerProps>(
         viewBox="0 0 100 28"
         preserveAspectRatio="none"
         aria-hidden="true"
-        className={cn('block w-full h-[28px]', fills[variant], className)}
+        className={cn('block w-full h-[28px]', fills[variant]!, className)}
         {...props}
       >
         <polygon points="0,0 100,0 50,28" />

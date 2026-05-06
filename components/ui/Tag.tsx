@@ -23,5 +23,5 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(function Tag(
   { variant = 'default', className, ...props },
   ref,
 ) {
-  return <span ref={ref} className={cn(base, variants[variant], className)} {...props} />;
+  return <span ref={ref} className={cn(base, variants[variant]!, className)} {...props} />;
 });

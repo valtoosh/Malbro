@@ -32,7 +32,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
     <button
       ref={ref}
       type={type}
-      className={cn(base, variants[variant], className)}
+      className={cn(base, variants[variant]!, className)}
       {...props}
     />
   );

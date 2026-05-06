@@ -17,5 +17,5 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
   { variant = 'card', className, ...props },
   ref,
 ) {
-  return <div ref={ref} className={cn(variants[variant], className)} {...props} />;
+  return <div ref={ref} className={cn(variants[variant]!, className)} {...props} />;
 });
