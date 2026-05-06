@@ -1,5 +1,5 @@
 // components/layout/Footer.tsx
-import { clsx } from 'clsx';
+import { cn } from '@/lib/cn';
 import { ChevronDivider } from '@/components/ui/ChevronDivider';
 
 export interface FooterProps {
@@ -17,7 +17,7 @@ export function Footer({ className, ...rest }: FooterProps) {
     <>
       <ChevronDivider />
       <footer
-        className={clsx(base, className)}
+        className={cn(base, className)}
         {...rest}
       >
         <span>§ All applications subject to Schedule R-7</span>
