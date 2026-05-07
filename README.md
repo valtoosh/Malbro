@@ -2,54 +2,70 @@
 
 > The Marlbro Foundation provides discretionary subsidies, denominated in $MARLBRO and SOL, to applicants who furnish documentation of authentic engagement with the namesake article. Pursuant to Schedule R-7, all submissions are subject to manual review.
 
-## Status
+## Monorepo layout
 
-This is **Plan 1 (Foundation)** of a multi-plan build. See `docs/superpowers/plans/` for the active build plan and `docs/superpowers/specs/2026-05-06-marlbro-design.md` for the full design spec.
-
-## Tech stack
-
-- Next.js 16 (App Router, TypeScript)
-- Tailwind v4 with CSS `@theme` design tokens
-- Vitest + Testing Library for unit tests
-- Vercel for deploys, GitHub Actions for CI
+```
+apps/
+  frontend/        Next.js 16 — public site + admin UI shell
+  backend/         Hono on Node — REST API + worker
+packages/
+  db/              Drizzle schema + queries (shared)
+  ui/              UI primitives (Button, Card, PosterCard, etc.)
+  shared/          tokens, cn, sampleData, session JWT helpers
+```
 
 ## Local dev
 
 ```bash
+# From repo root
 npm install
-npm run dev
+
+# Start backend (port 3001)
+npm run dev --workspace=@marlbro/backend
+
+# In another terminal — start frontend (port 3000)
+npm run dev --workspace=@marlbro/frontend
 ```
 
-Open http://localhost:3000.
+Open http://localhost:3000 — frontend will fetch backend at http://localhost:3001.
 
-## Scripts
+## Scripts (workspace-aware)
 
-| Command | What |
+```bash
+npm run typecheck       # all workspaces
+npm run lint            # all workspaces
+npm run test            # all workspaces
+npm run build           # all workspaces
+```
+
+Or per-workspace: `npm run <script> --workspace=@marlbro/<name>`.
+
+## Deployment
+
+- **Frontend** → Vercel. In Vercel project settings: set Root Directory to `apps/frontend`. Set env var `NEXT_PUBLIC_BACKEND_URL` to the public backend URL.
+- **Backend** → Railway. Uses `railway.json` at repo root. Set all backend env vars (see `.env.example`). Backend domain expected: `api.marlbro.com`.
+
+## Filling in stub credentials
+
+Stubs activate when env vars are missing. To go live:
+
+| Env var | What changes |
 |---|---|
-| `npm run dev` | Start dev server |
-| `npm run build` | Production build |
-| `npm test` | Run all tests once |
-| `npm run test:watch` | Run tests in watch mode |
-| `npm run typecheck` | TypeScript check |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier write |
-
-## Project structure
-
-```
-app/                     Next.js App Router routes
-components/ui/           Generic primitives (Button, Card, Stamp, ...)
-components/layout/       TopBar, Footer, PageShell
-components/icons/        Custom SVG icons (no emojis ever)
-lib/tokens.ts            Design tokens — single source of truth
-docs/superpowers/specs/  Design specs
-docs/superpowers/plans/  Build plans
-```
+| `DATABASE_URL` | Switches backend from PGlite to Neon Postgres |
+| `RESEND_API_KEY` | Magic-link emails delivered via Resend instead of console.log |
+| `TWITTER_CLIENT_ID` + `TWITTER_CLIENT_SECRET` | Real X OAuth |
+| `TWITTER_BEARER_TOKEN` | Real tweet content verification (Plan 6+) |
+| `R2_ACCESS_KEY_ID` + `R2_SECRET_ACCESS_KEY` + `R2_BUCKET` + `R2_PUBLIC_URL` | Receipts uploaded to Cloudflare R2 |
+| `SQUADS_PROPOSER_SK` + `SQUADS_MULTISIG_PUBKEY` | Real Solana on-chain payouts via Squads multisig |
 
 ## Brand rules (high-level)
 
-- All icons / status badges / glyphs are custom SVG. No emojis anywhere.
+- All icons / status badges / glyphs are custom SVG. No emojis.
 - Border radius is always 0.
 - Drop shadows are solid offset, never blurred.
 - No dark mode.
 - See `docs/superpowers/specs/2026-05-06-marlbro-design.md` §10 for the full system.
+
+## Plans
+
+See `docs/superpowers/plans/` for the iteration plan history.
