@@ -2,7 +2,7 @@
 // @vitest-environment node
 import { describe, it, expect, beforeEach } from 'vitest';
 import { createTestClient } from '../client';
-import { admins, twitterAccounts } from '../schema';
+import { twitterAccounts } from '../schema';
 import {
   createSubmission, getSubmissionByPublicUid, listPendingSubmissions, parseTweetUrl,
 } from './submissions';
