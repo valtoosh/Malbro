@@ -1,6 +1,6 @@
 // @vitest-environment node
 import { describe, it, expect, beforeEach } from 'vitest';
-import { createTestClient } from '@/db/client';
+import { createTestClient } from '@marlbro/db/client';
 import { checkRateLimits, recordIntake } from './rateLimit';
 
 describe('rateLimit', () => {

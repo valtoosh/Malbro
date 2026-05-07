@@ -1,5 +1,5 @@
 import { and, eq, gt, sql } from 'drizzle-orm';
-import { rateLimitEvents } from '@/db/schema';
+import { rateLimitEvents } from '@marlbro/db/schema';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Db = any;
