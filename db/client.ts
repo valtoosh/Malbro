@@ -4,6 +4,7 @@ import { PGlite } from '@electric-sql/pglite';
 import postgres from 'postgres';
 import * as schema from './schema';
 import { runMigrationsOn } from './migrate';
+import { seedIfEmpty } from './seed';
 
 type DrizzleDb =
   | ReturnType<typeof drizzlePg<typeof schema>>
@@ -21,6 +22,7 @@ export async function getDb(): Promise<DrizzleDb> {
     const pglite = new PGlite();
     const db = drizzlePglite(pglite, { schema });
     await runMigrationsOn(db);
+    await seedIfEmpty(db);
     cachedDb = db;
   }
   return cachedDb;
