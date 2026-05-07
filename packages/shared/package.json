@@ -9,7 +9,8 @@
     ".": "./src/index.ts",
     "./tokens": "./src/tokens.ts",
     "./cn": "./src/cn.ts",
-    "./sampleData": "./src/sampleData.ts"
+    "./sampleData": "./src/sampleData.ts",
+    "./session": "./src/session.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
@@ -17,6 +18,7 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "jose": "^6.2.3",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {

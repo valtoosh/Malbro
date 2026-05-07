@@ -1,5 +1,5 @@
 // apps/backend/src/auth/requireAdmin.ts
-import type { AdminRole } from './session';
+import type { AdminRole } from '@marlbro/shared/session';
 
 const ROLE_RANK: Record<AdminRole, number> = {
   reviewer: 0,

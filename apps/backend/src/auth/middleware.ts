@@ -1,6 +1,6 @@
 import type { Context, Next } from 'hono';
 import { createMiddleware } from 'hono/factory';
-import { decodeSession, type AdminRole, type SessionPayload } from './session';
+import { decodeSession, type AdminRole, type SessionPayload } from '@marlbro/shared/session';
 import { hasRequiredRole } from './requireAdmin';
 
 declare module 'hono' {

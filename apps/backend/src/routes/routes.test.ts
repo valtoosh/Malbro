@@ -1,7 +1,7 @@
 // apps/backend/src/routes/routes.test.ts
 import { describe, it, expect, beforeAll } from 'vitest';
 import app from '../server';
-import { encodeSession } from '../auth/session';
+import { encodeSession } from '@marlbro/shared/session';
 
 beforeAll(() => {
   process.env.MAGIC_LINK_SECRET = 'a'.repeat(64);

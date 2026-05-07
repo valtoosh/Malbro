@@ -5,7 +5,7 @@ import { getDb } from '@marlbro/db/client';
 import { admins } from '@marlbro/db/schema';
 import { sendMagicLink } from '../auth/sendMagicLink';
 import { verifyMagicLinkToken } from '../auth/magicLink';
-import { encodeSession } from '../auth/session';
+import { encodeSession } from '@marlbro/shared/session';
 
 export const adminLoginRoutes = new Hono();
 
