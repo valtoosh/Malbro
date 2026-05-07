@@ -1,6 +1,6 @@
 // components/ui/Input.tsx
 import { forwardRef, type InputHTMLAttributes } from 'react';
-import { cn } from '@/lib/cn';
+import { cn } from '@marlbro/shared/cn';
 
 type InputVariant = 'mono' | 'prose';
 

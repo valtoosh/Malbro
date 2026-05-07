@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Card } from './Card';
 import { Tag } from './Tag';
-import type { Bounty } from '@/lib/sampleData';
+import type { Bounty } from '@marlbro/shared/sampleData';
 
 function formatNumber(n: number): string {
   return n.toLocaleString('en-US');

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { BountyCard } from './BountyCard';
-import type { Bounty } from '@/lib/sampleData';
+import type { Bounty } from '@marlbro/shared/sampleData';
 
 const bounty: Bounty = {
   id: 'b1',

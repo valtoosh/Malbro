@@ -1,7 +1,7 @@
 // db/seed.ts
 import { count } from 'drizzle-orm';
 import { admins, bounties } from './schema';
-import { SAMPLE_BOUNTIES } from '@/lib/sampleData';
+import { SAMPLE_BOUNTIES } from '@marlbro/shared/sampleData';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Db = any;

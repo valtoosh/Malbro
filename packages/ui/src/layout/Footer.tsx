@@ -1,6 +1,6 @@
 // components/layout/Footer.tsx
-import { cn } from '@/lib/cn';
-import { ChevronDivider } from '@/components/ui/ChevronDivider';
+import { cn } from '@marlbro/shared/cn';
+import { ChevronDivider } from '../ui/ChevronDivider';
 
 export interface FooterProps {
   className?: string;

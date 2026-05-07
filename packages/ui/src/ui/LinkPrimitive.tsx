@@ -1,7 +1,7 @@
 // components/ui/LinkPrimitive.tsx
 import NextLink from 'next/link';
 import type { AnchorHTMLAttributes } from 'react';
-import { cn } from '@/lib/cn';
+import { cn } from '@marlbro/shared/cn';
 
 export interface LinkPrimitiveProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;

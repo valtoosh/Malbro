@@ -1,6 +1,6 @@
 // components/ui/ChevronDivider.tsx
 import { forwardRef, type SVGAttributes } from 'react';
-import { cn } from '@/lib/cn';
+import { cn } from '@marlbro/shared/cn';
 
 type ChevronVariant = 'ink' | 'red';
 

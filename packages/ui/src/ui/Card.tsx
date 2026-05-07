@@ -1,6 +1,6 @@
 // components/ui/Card.tsx
 import { forwardRef, type HTMLAttributes } from 'react';
-import { cn } from '@/lib/cn';
+import { cn } from '@marlbro/shared/cn';
 
 type CardVariant = 'card' | 'poster';
 

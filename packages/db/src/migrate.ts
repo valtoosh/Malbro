@@ -4,7 +4,7 @@ import { migrate as migratePglite } from 'drizzle-orm/pglite/migrator';
 import { drizzle as drizzlePg } from 'drizzle-orm/postgres-js';
 import postgres from 'postgres';
 
-const MIGRATIONS_FOLDER = path.join(process.cwd(), 'db', 'migrations');
+const MIGRATIONS_FOLDER = path.join(import.meta.dirname ?? path.dirname(new URL(import.meta.url).pathname), '..', 'migrations');
 
 export async function runMigrationsOn(db: unknown): Promise<void> {
   await migratePglite(db as Parameters<typeof migratePglite>[0], { migrationsFolder: MIGRATIONS_FOLDER });

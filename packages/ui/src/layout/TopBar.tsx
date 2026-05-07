@@ -1,5 +1,5 @@
 // components/layout/TopBar.tsx
-import { cn } from '@/lib/cn';
+import { cn } from '@marlbro/shared/cn';
 
 export interface TopBarProps {
   schedule?: string;

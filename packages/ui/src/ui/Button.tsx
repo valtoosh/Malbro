@@ -7,7 +7,7 @@ import {
   type ButtonHTMLAttributes,
   type ReactElement,
 } from 'react';
-import { cn } from '@/lib/cn';
+import { cn } from '@marlbro/shared/cn';
 
 type Variant = 'primary' | 'ghost';
 

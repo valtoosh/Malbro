@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "paths": {
+      "@marlbro/db": ["./packages/db/src/index.ts"],
+      "@marlbro/db/*": ["./packages/db/src/*"],
+      "@marlbro/ui": ["./packages/ui/src/index.ts"],
+      "@marlbro/ui/*": ["./packages/ui/src/*"],
+      "@marlbro/shared": ["./packages/shared/src/index.ts"],
+      "@marlbro/shared/*": ["./packages/shared/src/*"]
+    }
+  },
+  "exclude": ["node_modules", ".next", "dist", "build"]
+}

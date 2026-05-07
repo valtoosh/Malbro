@@ -1,0 +1,32 @@
+{
+  "name": "@marlbro/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema.ts",
+    "./client": "./src/client.ts",
+    "./seed": "./src/seed.ts",
+    "./migrate": "./src/migrate.ts",
+    "./queries/*": "./src/queries/*.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.4.5",
+    "drizzle-orm": "^0.45.2",
+    "postgres": "^3.4.7",
+    "@marlbro/shared": "*"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.7",
+    "vitest": "^4.1.5",
+    "@vitest/ui": "^4.1.5"
+  }
+}
