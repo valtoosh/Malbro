@@ -29,14 +29,16 @@ export default function AdminDashboard() {
           </Card>
         </Link>
 
-        <Card className="p-6">
-          <p className="font-mono text-eyebrow uppercase mb-3">MODULE</p>
-          <h3 className="font-display font-black text-h3 leading-tight">REVIEW QUEUE</h3>
-          <p className="text-bodyS text-ink-2 mt-2">Approve, reject, or flag pending grant applications.</p>
-          <div className="mt-4">
-            <Tag variant="muted">FORTHCOMING — PLAN 5</Tag>
-          </div>
-        </Card>
+        <Link href="/admin/queue" className="block">
+          <Card className="p-6 h-full hover:shadow-lg transition-shadow">
+            <p className="font-mono text-eyebrow uppercase mb-3">MODULE</p>
+            <h3 className="font-display font-black text-h3 leading-tight">REVIEW QUEUE</h3>
+            <p className="text-bodyS text-ink-2 mt-2">Approve, reject, or flag pending grant applications.</p>
+            <div className="mt-4">
+              <Tag>OPEN →</Tag>
+            </div>
+          </Card>
+        </Link>
 
         <Link href="/admin/audit" className="block">
           <Card className="p-6 h-full hover:shadow-lg transition-shadow">
