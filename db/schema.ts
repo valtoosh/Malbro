@@ -131,3 +131,23 @@ export type Submission = typeof submissions.$inferSelect;
 export type NewSubmission = typeof submissions.$inferInsert;
 export type TwitterAccount = typeof twitterAccounts.$inferSelect;
 export type NewTwitterAccount = typeof twitterAccounts.$inferInsert;
+
+export const payoutStatus = pgEnum('payout_status', ['queued', 'proposed', 'executed', 'failed']);
+
+export const approvedGrants = pgTable('approved_grants', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  displayNumber: serial('display_number').notNull(),
+  submissionId: uuid('submission_id').notNull().unique().references(() => submissions.id),
+  bountyId: uuid('bounty_id').references(() => bounties.id),
+  payoutMarlbro: numeric('payout_marlbro', { precision: 30, scale: 6 }).notNull().default('0'),
+  payoutSol: numeric('payout_sol', { precision: 30, scale: 9 }).notNull().default('0'),
+  payoutStatus: payoutStatus('payout_status').notNull().default('queued'),
+  squadsProposalPubkey: text('squads_proposal_pubkey'),
+  payoutTxSignature: text('payout_tx_signature'),
+  posterOgImageUrl: text('poster_og_image_url'),
+  approvedAt: timestamp('approved_at', { withTimezone: true }).notNull().defaultNow(),
+  paidAt: timestamp('paid_at', { withTimezone: true }),
+});
+
+export type ApprovedGrant = typeof approvedGrants.$inferSelect;
+export type NewApprovedGrant = typeof approvedGrants.$inferInsert;
