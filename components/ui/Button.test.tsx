@@ -43,3 +43,40 @@ describe('Button', () => {
     expect(screen.getByRole('button')).toHaveAttribute('type', 'submit');
   });
 });
+
+describe('Button asChild', () => {
+  it('renders the child element with button classes when asChild', () => {
+    render(
+      <Button asChild>
+        <a href="/x" data-testid="anchor">click me</a>
+      </Button>,
+    );
+    const a = screen.getByTestId('anchor');
+    expect(a.tagName.toLowerCase()).toBe('a');
+    expect(a.className).toMatch(/bg-marlbro/);
+    expect(a.className).toMatch(/border-4/);
+    expect(a).toHaveAttribute('href', '/x');
+  });
+
+  it('preserves child variant via Button variant prop', () => {
+    render(
+      <Button asChild variant="ghost">
+        <a href="/y" data-testid="anchor">x</a>
+      </Button>,
+    );
+    const a = screen.getByTestId('anchor');
+    expect(a.className).toMatch(/bg-paper/);
+    expect(a.className).toMatch(/text-ink/);
+  });
+
+  it('throws with multiple children', () => {
+    expect(() => {
+      render(
+        <Button asChild>
+          <a href="/x">a</a>
+          <span>b</span>
+        </Button>,
+      );
+    }).toThrow();
+  });
+});

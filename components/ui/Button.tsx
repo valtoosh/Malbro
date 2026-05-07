@@ -1,11 +1,19 @@
 // components/ui/Button.tsx
-import { forwardRef, type ButtonHTMLAttributes } from 'react';
+import {
+  Children,
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  type ButtonHTMLAttributes,
+  type ReactElement,
+} from 'react';
 import { cn } from '@/lib/cn';
 
 type Variant = 'primary' | 'ghost';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
+  asChild?: boolean;
 }
 
 const base =
@@ -25,15 +33,26 @@ const variants: Record<Variant, string> = {
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
-  { variant = 'primary', className, type = 'button', ...props },
+  { variant = 'primary', className, type = 'button', asChild, children, ...props },
   ref,
 ) {
+  const composed = cn(base, variants[variant]!, className);
+
+  if (asChild) {
+    const child = Children.only(children) as ReactElement<{ className?: string }>;
+    if (!isValidElement(child)) {
+      throw new Error('Button asChild requires a single React element child');
+    }
+    return cloneElement(child, {
+      ...props,
+      ref,
+      className: cn(composed, child.props.className),
+    } as object);
+  }
+
   return (
-    <button
-      ref={ref}
-      type={type}
-      className={cn(base, variants[variant]!, className)}
-      {...props}
-    />
+    <button ref={ref} type={type} className={composed} {...props}>
+      {children}
+    </button>
   );
 });
