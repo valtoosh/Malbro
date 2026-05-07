@@ -4,6 +4,10 @@ import Link from 'next/link';
 import { PageShell } from '@/components/layout/PageShell';
 import { PosterCard } from '@/components/ui/PosterCard';
 import { getPosterById, SAMPLE_POSTERS } from '@/lib/sampleData';
+import { getDb } from '@/db/client';
+import { getPosterViewById } from '@/db/queries/approvedGrants';
+
+export const dynamic = 'force-dynamic';
 
 export function generateStaticParams() {
   return SAMPLE_POSTERS.map((p) => ({ id: p.id }));
@@ -11,7 +15,9 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const poster = getPosterById(id);
+  const db = await getDb();
+  const dbPoster = await getPosterViewById(db, id);
+  const poster = dbPoster ?? getPosterById(id);
   if (!poster) return { title: 'Grant Not Found' };
   return { title: `Grant №${poster.displayNumber}` };
 }
@@ -22,7 +28,9 @@ export default async function PosterDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const poster = getPosterById(id);
+  const db = await getDb();
+  const dbPoster = await getPosterViewById(db, id);
+  const poster = dbPoster ?? getPosterById(id);
   if (!poster) notFound();
 
   return (

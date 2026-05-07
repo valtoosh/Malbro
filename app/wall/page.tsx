@@ -3,10 +3,17 @@ import Link from 'next/link';
 import { PageShell } from '@/components/layout/PageShell';
 import { PosterCard } from '@/components/ui/PosterCard';
 import { SAMPLE_POSTERS } from '@/lib/sampleData';
+import { getDb } from '@/db/client';
+import { listExecutedAsPosters } from '@/db/queries/approvedGrants';
 
 export const metadata = { title: 'Wall of Grants' };
+export const dynamic = 'force-dynamic';
 
-export default function WallPage() {
+export default async function WallPage() {
+  const db = await getDb();
+  const dbPosters = await listExecutedAsPosters(db);
+  const posters = dbPosters.length > 0 ? dbPosters : SAMPLE_POSTERS;
+
   return (
     <PageShell schedule="Schedule R-7 · Form 042-W">
       <header className="mb-12">
@@ -20,12 +27,12 @@ export default function WallPage() {
           with Schedule R-7 §22.
         </p>
         <p className="font-mono text-caption uppercase tracking-[0.12em] mt-4 text-ink-2">
-          {SAMPLE_POSTERS.length} GRANTS ON RECORD
+          {posters.length} GRANTS ON RECORD
         </p>
       </header>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {SAMPLE_POSTERS.map((poster) => (
+        {posters.map((poster) => (
           <Link key={poster.id} href={`/wall/${poster.id}`} className="block group">
             <div className="transition-transform duration-[80ms] group-hover:translate-x-[-2px] group-hover:translate-y-[-2px]">
               <PosterCard {...poster} />
