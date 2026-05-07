@@ -18,14 +18,16 @@ export default function AdminDashboard() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-        <Card className="p-6">
-          <p className="font-mono text-eyebrow uppercase mb-3">MODULE</p>
-          <h3 className="font-display font-black text-h3 leading-tight">BOUNTY MANAGEMENT</h3>
-          <p className="text-bodyS text-ink-2 mt-2">Create, edit, pause, and retire grants on the public Bounty Board.</p>
-          <div className="mt-4">
-            <Tag variant="muted">FORTHCOMING — PLAN 4</Tag>
-          </div>
-        </Card>
+        <Link href="/admin/bounties" className="block">
+          <Card className="p-6 h-full hover:shadow-lg transition-shadow">
+            <p className="font-mono text-eyebrow uppercase mb-3">MODULE</p>
+            <h3 className="font-display font-black text-h3 leading-tight">BOUNTY MANAGEMENT</h3>
+            <p className="text-bodyS text-ink-2 mt-2">Create, edit, pause, and retire grants on the public Bounty Board.</p>
+            <div className="mt-4">
+              <Tag>OPEN →</Tag>
+            </div>
+          </Card>
+        </Link>
 
         <Card className="p-6">
           <p className="font-mono text-eyebrow uppercase mb-3">MODULE</p>
@@ -36,14 +38,16 @@ export default function AdminDashboard() {
           </div>
         </Card>
 
-        <Card className="p-6">
-          <p className="font-mono text-eyebrow uppercase mb-3">MODULE</p>
-          <h3 className="font-display font-black text-h3 leading-tight">AUDIT LOG</h3>
-          <p className="text-bodyS text-ink-2 mt-2">View administrative action history with filtering.</p>
-          <div className="mt-4">
-            <Tag variant="muted">FORTHCOMING — PLAN 4</Tag>
-          </div>
-        </Card>
+        <Link href="/admin/audit" className="block">
+          <Card className="p-6 h-full hover:shadow-lg transition-shadow">
+            <p className="font-mono text-eyebrow uppercase mb-3">MODULE</p>
+            <h3 className="font-display font-black text-h3 leading-tight">AUDIT LOG</h3>
+            <p className="text-bodyS text-ink-2 mt-2">View administrative action history (superadmin only).</p>
+            <div className="mt-4">
+              <Tag>OPEN →</Tag>
+            </div>
+          </Card>
+        </Link>
       </div>
 
       <p className="font-mono text-caption uppercase tracking-[0.12em] mt-12 text-ink-2">
